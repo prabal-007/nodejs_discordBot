@@ -1,11 +1,26 @@
-require('dotenv').config();
-const Discord = require('discord.js');
+// require('dotenv').config();
+// const Discord = require('discord.js');
+// const axios = require('axios');
+// const client = new Discord.Client();
+require('dotenv').config(); //initialize dotenv
+const { Client, GatewayIntentBits } = require('discord.js')
+const client = new Client({
+    intents: [
+        GatewayIntentBits.Guilds,
+        // ...
+    ]
+})
+//const Discord = require('discord.js'); //import discord.js
 const axios = require('axios');
-const client = new Discord.Client();
+//const client = new Discord.Client(); //create new client
+
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
 
 let interval;
 client.on('message', async msg => {
-  switch (msg.content) {
+  switch(msg.content === 'ping') {
     case "ping":
       msg.reply("Pong!");
       break;
@@ -35,5 +50,5 @@ async function getMeme(){
 }
 
 
-//must be last line
+//must be lat line
 client.login(process.env.CLIENT_TOKEN);
