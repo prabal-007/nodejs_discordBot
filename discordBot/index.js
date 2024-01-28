@@ -34,7 +34,7 @@ client.on('message', async msg => {
        interval = setInterval (function () {
         msg.channel.send("Please take an eye break now!")
         .catch(console.error); 
-      }, 3600000); //every hour
+      }, 3600000); 
       break;
     case "!stop":
       msg.channel.send("I have stopped eye reminders.");
